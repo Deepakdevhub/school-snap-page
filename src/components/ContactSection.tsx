@@ -3,7 +3,29 @@ import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
-const ContactSection = () => {
+interface ContactData {
+  address: string;
+  phone: {
+    main: string;
+    admissions: string;
+  };
+  email: {
+    info: string;
+    admissions: string;
+  };
+  hours: {
+    weekdays: string;
+    saturday: string;
+    sunday: string;
+  };
+  mapEmbedUrl: string;
+}
+
+interface ContactSectionProps {
+  data: ContactData;
+}
+
+const ContactSection: React.FC<ContactSectionProps> = ({ data }) => {
   return (
     <section id="contact" className="bg-school-light">
       <div className="section-container">
@@ -19,7 +41,7 @@ const ContactSection = () => {
                 <MapPin className="text-school-primary" size={24} />
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Address</h3>
-                  <p className="text-muted-foreground">123 Education Lane, Academic District,<br />Knowledge City, 56789</p>
+                  <p className="text-muted-foreground">{data.address}</p>
                 </div>
               </CardContent>
             </Card>
@@ -29,8 +51,8 @@ const ContactSection = () => {
                 <Phone className="text-school-primary" size={24} />
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Phone</h3>
-                  <p className="text-muted-foreground">Main Office: (123) 456-7890</p>
-                  <p className="text-muted-foreground">Admissions: (123) 456-7891</p>
+                  <p className="text-muted-foreground">Main Office: {data.phone.main}</p>
+                  <p className="text-muted-foreground">Admissions: {data.phone.admissions}</p>
                 </div>
               </CardContent>
             </Card>
@@ -40,8 +62,8 @@ const ContactSection = () => {
                 <Mail className="text-school-primary" size={24} />
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Email</h3>
-                  <p className="text-muted-foreground">info@excellenceschool.edu</p>
-                  <p className="text-muted-foreground">admissions@excellenceschool.edu</p>
+                  <p className="text-muted-foreground">{data.email.info}</p>
+                  <p className="text-muted-foreground">{data.email.admissions}</p>
                 </div>
               </CardContent>
             </Card>
@@ -51,9 +73,9 @@ const ContactSection = () => {
                 <Clock className="text-school-primary" size={24} />
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Office Hours</h3>
-                  <p className="text-muted-foreground">Monday - Friday: 8:00 AM - 4:00 PM</p>
-                  <p className="text-muted-foreground">Saturday: 9:00 AM - 12:00 PM</p>
-                  <p className="text-muted-foreground">Sunday: Closed</p>
+                  <p className="text-muted-foreground">{data.hours.weekdays}</p>
+                  <p className="text-muted-foreground">{data.hours.saturday}</p>
+                  <p className="text-muted-foreground">{data.hours.sunday}</p>
                 </div>
               </CardContent>
             </Card>
@@ -62,7 +84,7 @@ const ContactSection = () => {
           <div className="lg:col-span-2 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <div className="rounded-lg overflow-hidden shadow-lg h-full min-h-[400px]">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835253651862!2d144.95372915905873!3d-37.817327679751104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sus!4v1635201076117!5m2!1sen!2sus" 
+                src={data.mapEmbedUrl} 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, minHeight: '400px' }}

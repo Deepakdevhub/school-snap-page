@@ -2,34 +2,20 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
-const alumni = [
-  {
-    id: 1,
-    name: "Alex Rodriguez",
-    graduation: "Class of 2010",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&h=300",
-    achievement: "CEO of TechVision Inc.",
-    testimonial: "My years at Excellence School formed the foundation of my success. The values of perseverance and innovation that I learned here have guided me throughout my career."
-  },
-  {
-    id: 2,
-    name: "Priya Sharma",
-    graduation: "Class of 2012",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&h=300",
-    achievement: "Award-winning Medical Researcher",
-    testimonial: "The rigorous academic environment and supportive teachers at Excellence School inspired my passion for medical research and gave me the confidence to pursue my dreams."
-  },
-  {
-    id: 3,
-    name: "James Wilson",
-    graduation: "Class of 2015",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&h=300",
-    achievement: "Olympic Gold Medalist",
-    testimonial: "The physical education program and the discipline instilled in me at Excellence School played a crucial role in my athletic career. I'll always be grateful for the coaches who believed in me."
-  }
-];
+interface AlumniMember {
+  id: number;
+  name: string;
+  graduation: string;
+  image: string;
+  achievement: string;
+  testimonial: string;
+}
 
-const AlumniSection = () => {
+interface AlumniSectionProps {
+  alumni: AlumniMember[];
+}
+
+const AlumniSection: React.FC<AlumniSectionProps> = ({ alumni }) => {
   return (
     <section id="alumni" className="bg-school-accent">
       <div className="section-container">
