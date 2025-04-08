@@ -1,12 +1,51 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import Header from '@/components/Header';
+import Carousel from '@/components/Carousel';
+import AboutSection from '@/components/AboutSection';
+import FacultySection from '@/components/FacultySection';
+import AlumniSection from '@/components/AlumniSection';
+import AdmissionSection from '@/components/AdmissionSection';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
 
 const Index = () => {
+  const carouselImages = [
+    {
+      src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&h=500",
+      alt: "Excellence School Campus"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1200&h=500",
+      alt: "Students in Classroom"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&h=500",
+      alt: "School Library"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1200&h=500",
+      alt: "Sports Facilities"
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      
+      <main>
+        <section id="home">
+          <Carousel images={carouselImages} interval={5000} />
+        </section>
+        
+        <AboutSection />
+        <FacultySection />
+        <AlumniSection />
+        <AdmissionSection />
+        <ContactSection />
+      </main>
+      
+      <Footer />
     </div>
   );
 };
